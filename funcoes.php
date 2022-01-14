@@ -10,6 +10,8 @@ function getArray(){
         "transportadora" => "Santa Enterprises",
         "placa" => "CVP-8897",
         "horarioChegada" => "09:57",
+        "horarioEntrada" => null,
+        "horarioSaida" => null,
         "cliente" => "Philips Enterprise",
         "entregaColeta" => "coleta"
     );
@@ -30,31 +32,34 @@ function gerarTabelaGuarita($array)
         ."<tr>"
             ."<td>".$array["nome"]."</td>"
             ."<td>".$array["placa"]."</td>"
-            ."<td>0:00</td>"
-            ."<td>00:00</td>"
+            ."<td>".preencheEntrada($array["horarioEntrada"])."</td>"
+            ."<td>".preencheSaida($array["horarioEntrada"],$array["horarioSaida"])."</td>"
         ."</tr>"
     ."</table>";
 }
+//date("H:i:s")
+
 //Função para preencher o horário de entrada
 function  preencheEntrada($entrada)
 {
     if($entrada == null){
-        return "<button id='btnEntrada'>Registrar</button>";
+        return "<button id='btnEntrada' onClick=".atualizarEntrada().">Registrar</button>";
     }
         return $entrada;
 }
-//Função pra vericicar se o horário de Saída é nulo
-function verificaSaida($saida)
-{
-    if($saida == null)
-    {
-        return true;
-    }
-        return false;
+//Função pra atualizar o valor do horário de entrada
+function atualizarEntrada(){
+    $array[Entrada]
 }
 //Função pra preencher o horário de Saída
-function preencheSaida(){
-    return "<button id='btnSaida'>Registrar</button>";
+function preencheSaida($entrada, $saida){
+    if($entrada == null)
+    {
+       return "<button id='btnSaida' disabled> Registrar</button>";
+    } elseif($saida == null){
+        return "<button id='btnSaida'>Registrar</button>";
+    }
+        return $saida;
 }
 //função que faz conexão com o banco de dados
 function conexaoBanco(){
