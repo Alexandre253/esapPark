@@ -1,9 +1,23 @@
 <?php
-//funções
-echo "HELlO WORLD";
-echo "Hello world 2";
+
+//preencher o array de teste
+
+function getArray(){
+    $array = array(
+        "data" => "14/01/2022",
+        "documento" => "012.345.678-90",
+        "nome" => "Michael de Santa",
+        "transportadora" => "Santa Enterprises",
+        "placa" => "CVP-8897",
+        "horarioChegada" => "09:57",
+        "cliente" => "Philips Enterprise",
+        "entregaColeta" => "coleta"
+    );
+ return $array;   
+}
 //Função pra gerar a tabela com nome, placa, horário de entrada, horário de saída
-function gerarTabela()
+
+function gerarTabelaGuarita($array)
 {
     echo 
     "<table border='2'>"
@@ -12,6 +26,12 @@ function gerarTabela()
             ."<td>Placa</td>"
             ."<td>Horário de Entrada</td>"
             ."<td>Horário de Saída</td>"
+        ."</tr>"
+        ."<tr>"
+            ."<td>".$array["nome"]."</td>"
+            ."<td>".$array["placa"]."</td>"
+            ."<td>0:00</td>"
+            ."<td>00:00</td>"
         ."</tr>"
     ."</table>";
 }
