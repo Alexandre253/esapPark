@@ -1,6 +1,6 @@
 <?php
 //funções
-
+echo "HELlO WORLD";
 //Função pra gerar a tabela com nome, placa, horário de entrada, horário de saída
 function gerarTabela()
 {
@@ -15,12 +15,12 @@ function gerarTabela()
     ."</table>";
 }
 //Função para preencher o horário de entrada
-function preencheEntrada($entrada)
+function string preencheEntrada($entrada)
 {
     if($entrada == null){
-        return echo"<button id='btnEntrada'>Registrar</button>";
+        return "<button id='btnEntrada'>Registrar</button>";
     }
-        return echo $entrada;
+        return $entrada;
 }
 //Função pra vericicar se o horário de Saída é nulo
 function verificaSaida($saida)
