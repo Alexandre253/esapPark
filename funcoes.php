@@ -1,6 +1,7 @@
 <?php
 //funções
 echo "HELlO WORLD";
+echo "Hello world 2";
 //Função pra gerar a tabela com nome, placa, horário de entrada, horário de saída
 function gerarTabela()
 {
@@ -15,7 +16,7 @@ function gerarTabela()
     ."</table>";
 }
 //Função para preencher o horário de entrada
-function string preencheEntrada($entrada)
+function  preencheEntrada($entrada)
 {
     if($entrada == null){
         return "<button id='btnEntrada'>Registrar</button>";
@@ -33,7 +34,7 @@ function verificaSaida($saida)
 }
 //Função pra preencher o horário de Saída
 function preencheSaida(){
-    return echo "<button id='btnSaida'>Registrar</button>";
+    return "<button id='btnSaida'>Registrar</button>";
 }
 //função que faz conexão com o banco de dados
 function conexaoBanco(){
@@ -45,5 +46,5 @@ function buscaDados(){
     $result = conn->query($sql);
     return $result;
 }
-}
+
 ?>
