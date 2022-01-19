@@ -12,37 +12,37 @@
 					<label for="doc">
 						<span>Documento: </span>
 						</label>
-					<input type="text" id="doc">
+					<input type="text" name ="doc" id="doc">
 				</p>
 				<p>
 					<label for="nome">
 						<span>Nome: </span>
 						</label>
-					<input type="text" id="nome">
+					<input type="text" id="nome" name="nome">
 				</p>
 				<p>
 					<label for="emp">
 						<span>Empresa: </span>
 						</label>
-					<input type="text" id="emp">
+					<input type="text" id="emp" name="emp">
 				</p>
 				<p>
 					<label for="placa">
 						<span>Placa: </span>
 						</label>
-					<input type="text" id="placa">
+					<input type="text" id="placa" name ="placa">
 				</p>
 				<p>
 					<label for="cliente">
 						<span>Cliente: </span>
 						</label>
-					<input type="text" id="cliente">
+					<input type="text" id="cliente" name ="placa">
 				</p>
 				<p>
 					<label for="nf">
 						<span>Coleta/Nota Fiscal: </span>
 						</label>
-					<input type="text" id="nf">
+					<input type="text" id="nf" name ="nf">
 				</p>
 				<p><button type="reset">Enviar</button></p>
 				<section>
