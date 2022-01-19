@@ -1,22 +1,13 @@
 <?php
-//endereço
-//nome do BD
-//usuario
-//senha
 
-$endereco = 'localhost';
+$host = 'localhost';
 $banco = 'esapbd';
 $usuario = 'postgres';
 $senha = 'alexandre11';
+$dns = "pgsql:host=$host;port=5432;dbname=$banco;";
 
 try{
-	//sgbd:host;port;dbname
-	//usuario
-	//senha
-	
-	$pdo = new PDO("pgsql:host=$endereço;port=5432;dbname=$banco", $usuario, $senha,[PDO::ATTR_ERRMODE => 
-	PDO::ERRMODE_EXCEPTION]);
-	
+	$pdo = new PDO($dns,$usuario,$senha,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 	echo "Conectado!";
 	
 }catch(PDOException $e){
@@ -24,4 +15,6 @@ try{
 	die($e->getMessage());
 	
 }
+$connString = "host=$host port=5432 dbname=$banco user=$usuario password=$senha";
+$conn = pg_connect($connString);
 ?>
