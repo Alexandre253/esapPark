@@ -1,26 +1,12 @@
 <?php
-
+include 'funcoesBD.php';
 //preencher o array de teste
 
-function getArray(){
-    $array = array(
-        "data" => "14/01/2022",
-        "documento" => "012.345.678-90",
-        "nome" => "Michael de Santa",
-        "transportadora" => "Santa Enterprises",
-        "placa" => "CVP-8897",
-        "horarioChegada" => "09:57",
-        "horarioEntrada" => null,
-        "horarioSaida" => null,
-        "cliente" => "Philips Enterprise",
-        "entregaColeta" => "coleta"
-    );
- return $array;   
-}
 //Função pra gerar a tabela com nome, placa, horário de entrada, horário de saída
 
 function gerarTabelaGuarita($array)
 {
+    $row = 1;
     echo 
     "<table border='2'>"
         ."<tr>"
@@ -28,12 +14,13 @@ function gerarTabelaGuarita($array)
             ."<td>Placa</td>"
             ."<td>Horário de Entrada</td>"
             ."<td>Horário de Saída</td>"
-        ."</tr>"
-        ."<tr>"
-            ."<td>".$array["nome"]."</td>"
-            ."<td>".$array["placa"]."</td>"
-            ."<td>".preencheEntrada($array["horarioEntrada"])."</td>"
-            ."<td>".preencheSaida($array["horarioEntrada"],$array["horarioSaida"])."</td>"
+        ."</tr>";
+         $rs = pg_fetch_array($array,$row);
+        echo "<tr>"
+            ."<td>".$rs["nome"]."</td>"
+            ."<td>".$rs["placa"]."</td>"
+            ."<td>".preencheEntrada($rs["horarioEntrada"])."</td>"
+            ."<td>".preencheSaida($rs["horarioEntrada"],$rs["horarioSaida"])."</td>"
         ."</tr>"
     ."</table>";
 }
@@ -49,7 +36,7 @@ function  preencheEntrada($entrada)
 }
 //Função pra atualizar o valor do horário de entrada
 function atualizarEntrada(){
-    $array[Entrada]
+    $array["horarioEntrada"] = date("H:i:s");
 }
 //Função pra preencher o horário de Saída
 function preencheSaida($entrada, $saida){
