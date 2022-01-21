@@ -2,13 +2,32 @@
 include 'funcoesBD.php';
 //preencher o array de teste
 
+//Função para gerar o cabeçalho da tabela da guarita
+function GerarCabecalhoGuarita(){
+    
+}
+
+//função para gerar as linhas da tabela
+// Os dados vem em forma de objeto, do banco de dados psql
+function gerarLinhas($obj){
+    $length = pg_num_rows($obj);
+    for($row = 0;$row<$length;$row++):
+        $array = pg_fetch_array($obj,$row);
+        echo "<tr>"
+            ."<td>".$array["nome"]."</td>"
+            ."<td>".$array["placa"]."</td>"
+            ."<td>".preencheEntrada($array["horarioEntrada"])."</td>"
+            ."<td>".preencheSaida($array["horarioEntrada"],$array["horarioSaida"])."</td>"
+        ."</tr>";
+    endfor;
+
+}
+
 //Função pra gerar a tabela com nome, placa, horário de entrada, horário de saída
 //Usando os dados vindo da select do banco como parâmetro
 //A tabela é gerada por html 
-
-function gerarTabelaGuarita($array)
+function gerarTabelaGuarita()
 {
-    $row = 1;
     echo 
     "<table border='2'>"
         ."<tr>"
@@ -17,14 +36,8 @@ function gerarTabelaGuarita($array)
             ."<td>Horário de Entrada</td>"
             ."<td>Horário de Saída</td>"
         ."</tr>";
-         $rs = pg_fetch_array($array,$row);
-        echo "<tr>"
-            ."<td>".$rs["nome"]."</td>"
-            ."<td>".$rs["placa"]."</td>"
-            ."<td>".preencheEntrada($rs["horarioEntrada"])."</td>"
-            ."<td>".preencheSaida($rs["horarioEntrada"],$rs["horarioSaida"])."</td>"
-        ."</tr>"
-    ."</table>";
+        gerarLinhas(getDadosBD());
+    "</table>";
 }
 //date("H:i:s")
 
@@ -54,10 +67,4 @@ function preencheSaida($entrada, $saida){
     }
         return $saida;
 }
-//função que faz conexão com o banco de dados
-//Mas aparentemente não serve de nada
-function conexaoBanco(){
-    $pdo = new PDO("mysql:host=HOST;dbname=BASE", "USUARIO", "SENHA"); 
-}
-
 ?>

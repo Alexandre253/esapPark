@@ -16,7 +16,7 @@ $conn = pg_connect($connString);
 	</p>
 
 	<?php
-		gerarTabelaGuarita(getDadosBD());
+		gerarTabelaGuarita();
 	?>
 	
 	</body>
