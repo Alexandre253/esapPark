@@ -3,6 +3,8 @@ include 'funcoesBD.php';
 //preencher o array de teste
 
 //Função pra gerar a tabela com nome, placa, horário de entrada, horário de saída
+//Usando os dados vindo da select do banco como parâmetro
+//A tabela é gerada por html 
 
 function gerarTabelaGuarita($array)
 {
@@ -27,6 +29,7 @@ function gerarTabelaGuarita($array)
 //date("H:i:s")
 
 //Função para preencher o horário de entrada
+//Dentro da tabela da guarita
 function  preencheEntrada($entrada)
 {
     if($entrada == null){
@@ -35,10 +38,13 @@ function  preencheEntrada($entrada)
         return $entrada;
 }
 //Função pra atualizar o valor do horário de entrada
+//Dentro da tabela da guarita
+
 function atualizarEntrada(){
     $array["horarioEntrada"] = date("H:i:s");
 }
 //Função pra preencher o horário de Saída
+//Dentro da tabela da guarita
 function preencheSaida($entrada, $saida){
     if($entrada == null)
     {
@@ -49,14 +55,9 @@ function preencheSaida($entrada, $saida){
         return $saida;
 }
 //função que faz conexão com o banco de dados
+//Mas aparentemente não serve de nada
 function conexaoBanco(){
     $pdo = new PDO("mysql:host=HOST;dbname=BASE", "USUARIO", "SENHA"); 
-}
-//função para selecionar dados do banco de dados
-function buscaDados(){
-    $sql = "SELECT * FROM ESAP ";
-    $result = conn->query($sql);
-    return $result;
 }
 
 ?>
