@@ -13,6 +13,8 @@ function gerarLinhas($obj){
     $length = pg_num_rows($obj);
     for($row = 0;$row<$length;$row++):
         $array = pg_fetch_array($obj,$row);
+       $array["horarioEntrada"] = "00:00";
+      // $array["horarioSaida"] = "00:00";
         echo "<tr>"
             ."<td>".$array["nome"]."</td>"
             ."<td>".$array["placa"]."</td>"
@@ -20,7 +22,7 @@ function gerarLinhas($obj){
             ."<td>".preencheSaida($array["horarioEntrada"],$array["horarioSaida"])."</td>"
         ."</tr>";
     endfor;
-
+    echo "<h2>$length resultados encontrados </h2>";
 }
 
 //Função pra gerar a tabela com nome, placa, horário de entrada, horário de saída
