@@ -25,9 +25,8 @@ function gerarLinhas($obj){
     echo "<h2>$length resultados encontrados </h2>";
    //var_dump($array);
 }
-function gerarLinhasRelatorio($obj){
+function gerarLinhasRelatorio($obj, $now){
     $length = pg_num_rows($obj);
-    $now = date("Y-m-d");
     for($row = 0; $row<$length;$row++):
         $array = pg_fetch_array($obj, $row);
         $data = $array['var_data'];
@@ -71,7 +70,7 @@ function gerarTabelaRelatorio($data)
             ."<td>Horário de Entrada</td>"
             ."<td>Horário de Saída</td>"
         ."</tr>";
-        gerarLinhasRelatorio(getDadosBD($data));
+        gerarLinhasRelatorio(getDadosBDRelatorio(),$data);
     "</table>";
 }
 //date("H:i:s")

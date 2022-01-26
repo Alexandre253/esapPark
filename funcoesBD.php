@@ -15,15 +15,12 @@ function getDadosBD(){
     pg_close($conn);
 return $result;
 }
-function getDadosBDRelatorio($data){
+function getDadosBDRelatorio(){
     $conn = conexaoBanco();
     $row = 1;
-    //$string = "1010101 222220000";
-    echo substr($string, 0, -8);
-    $query = "SELECT * FROM planilha where 'var_data' = '$data' order by cod_visita asc ";
+    $query = "SELECT * FROM planilha order by cod_visita asc ";
     $result = pg_query($conn,$query);
- // echo (array)$result['var_data'];
-return $result;
+    return $result;
 }
 function inserirTabela($documento,$nome,$empresa,$cliente,$coletaEntrega){
 $query = "INSERT INTO planilha (varData, documento, nome, transportadora, placa, horarioChegada, cliente, 
