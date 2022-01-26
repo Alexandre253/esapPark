@@ -4,7 +4,7 @@
 	</head>
 	
 	<body>
-		<form method="post">
+		<form method="post" action ="insereform.php">
 				<h2>Registro de entrada</h2>
 				<section>
 				<fieldset>
@@ -36,7 +36,7 @@
 					<label for="cliente">
 						<span>Cliente: </span>
 						</label>
-					<input type="text" id="cliente" name ="placa">
+					<input type="text" id="cliente" name ="cliente">
 				</p>
 				<p>
 					<label for="nf">
@@ -44,7 +44,7 @@
 						</label>
 					<input type="text" id="nf" name ="nf">
 				</p>
-				<p><button type="reset">Enviar</button></p>
+				<p><input type="submit" value="Enviar"></p>
 				<section>
 				</fieldset>
 		</form>
