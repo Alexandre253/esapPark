@@ -3,7 +3,11 @@
 		<title>Relatório</title>
 	</head>
 	<body>
-		<table border="1">
+		<?php
+		include_once 'funcoes.php';
+		include_once 'funcoesBD.php';
+		include_once 'conectaBD.php';
+		/*<table border="1">
 			<tr>
 				<th>Data</th>
 				<th>Documento</th>
@@ -27,7 +31,11 @@
 				<th>17:50</th>
 				<th>Philips Enterprises</th>
 				<th>Coleta</th>
-		</table>
+		</table>*/
+		$data = date("Y-m-d H:i:s");
+		//echo $data;
+		gerarTabelaRelatorio($data);
+		?>
 		<form method="post">
 		<label>
 			<p><span>Data</span>

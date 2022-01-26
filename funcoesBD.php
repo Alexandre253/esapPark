@@ -1,3 +1,8 @@
+<script>
+    function clickMe(){
+        
+    }
+</script>
 <?php
 include_once 'conectaBD.php';
 //retorna as linhas da tabela
@@ -5,9 +10,19 @@ include_once 'conectaBD.php';
 function getDadosBD(){
     $conn = conexaoBanco();
     $row = 1;
-    $query = "SELECT * FROM planilha";
+    $query = "SELECT * FROM planilha order by cod_visita asc";
     $result = pg_query($conn,$query);
     pg_close($conn);
+return $result;
+}
+function getDadosBDRelatorio($data){
+    $conn = conexaoBanco();
+    $row = 1;
+    //$string = "1010101 222220000";
+    echo substr($string, 0, -8);
+    $query = "SELECT * FROM planilha where 'var_data' = '$data' order by cod_visita asc ";
+    $result = pg_query($conn,$query);
+ // echo (array)$result['var_data'];
 return $result;
 }
 function inserirTabela($documento,$nome,$empresa,$cliente,$coletaEntrega){
@@ -26,4 +41,8 @@ function conexaoBanco(){
     $connString = "host=$host port=5432 dbname=$banco user=$usuario password=$senha";
     return pg_connect($connString);
 }
+//Função pra atualizar o valor do horário de entrada
+//Dentro da tabela da guarita
+
+
 ?>
