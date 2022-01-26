@@ -12,12 +12,11 @@ $conn = pg_connect($connString);
 	<body>
 	<p>
 		<button onClick = "window.location.reload();">Atualizar</button>
-		
 	</p>
-
+	<form name = "form1" method="get" action="test.php">
 	<?php
 		gerarTabelaGuarita();
 	?>
-	
+	</form>
 	</body>
 </html>

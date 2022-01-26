@@ -1,13 +1,3 @@
-CREATE DATABASE ESAP
-USE ESAP
-CREATE TABLE ESAP(
-    placa varchar(10) primary key,
-    nome varchar(32) primary key,
-    horarioEntrada datetime null,
-    horarioSaida datetime null
-);
-insert into planilha("varData", "documento", "nome", "transportadora", "placa",
-					"horarioChegada", "horarioEntrada", "horarioSaida", 
-					 "cliente", "entregaColeta") 
-					 values (current_timestamp,'123456','Michael de Santa','Philips Enterprise',
-							 'EVK-2022',NULL, NULL, NULL, 'Gemla', 'Coleta'); 
+INSERT INTO public.planilha(
+	 "varData", doc, nome, emp, placa, cliente, "nf ")
+	VALUES (now(), '719720303-10', 'ABRAAO DE CARVALHO', 'TONIATO TRANSPORTE', 'EIR-0513', 'BASF', 'NF253963');
