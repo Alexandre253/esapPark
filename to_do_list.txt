@@ -1,0 +1,26 @@
+*relatorio.*
+-Aprimorar campo data -
+-Correção visual 
+============================================
+*form*
+-Correção visual
+============================================
+*guarita*
+
+-Aprimoramento na busca
+    -Buscar dados do mesmo dia e com a flag yellow.
+        -flag yellow são linhas sem horário de entrada ou saída definidos.
+-Correção visual
+
+=============================================
+*G E R A L*
+-Corrigir o código
+    -tirar os execessos.
+    -tirar funções que tem o mesmo código.
+-Arrumar uma forma de registrar veículos que não entraram.
+-Arrumar uma forma de colocar número de telefone.
+-Arrumar uma forma de colocar observação, tanto eu, como os vigilantes
+-Reestruturar o banco de dados.
+-Criar as páginas da ibl e dumar.
+    -Criar uma forma de eu inserir dados na ibl e dumar pela página form.
+    -Criar uma forma da equipe de segurança inserir dados na ibl e dumar pela página guarita.
