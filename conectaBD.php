@@ -6,7 +6,7 @@ $usuario = 'postgres';
 $senha = 'alexandre11';
 $dns = "pgsql:host=$host;port=5432;dbname=$banco;";
 
-try{
+/*try{
 	$pdo = new PDO($dns,$usuario,$senha,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 	echo "Conectado!";
 	
@@ -14,7 +14,7 @@ try{
 	echo "Falha na conexão.";
 	die($e->getMessage());
 	
-}
+}*/
 $connString = "host=$host port=5432 dbname=$banco user=$usuario password=$senha";
 $conn = pg_connect($connString);
 ?>
