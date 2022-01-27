@@ -19,11 +19,11 @@ function getDadosBDRelatorio(){
     return $result;
 }
 function inserirTabela($conn, $nome,$doc,$emp,$placa,$cliente,$nf){
-$query = "INSERT INTO public.planilha (var_data, doc, nome, emp, placa, cliente)0"
-."VALUES (now(), $doc, $nome, $emp, $placa, $cliente)";
+$query = "INSERT INTO public.planilha (var_data, doc, nome, emp, placa, cliente, nf)"
+."VALUES (now(), $doc, $nome, $emp, $placa, $cliente, $nf)";
 $string ="INSERT INTO public.planilha("
-	."doc, nome, emp, placa, cliente,var_data)"
-	."VALUES ('$doc', '$nome', '$emp', '$placa', '$cliente', now());";
+	."doc, nome, emp, placa, cliente,var_data,nf)"
+	."VALUES ('$doc', '$nome', '$emp', '$placa', '$cliente', now(), '$nf');";
 $result =pg_query($conn, $string);
 //var_dump($result);
 //pg_close($conn);

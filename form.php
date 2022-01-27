@@ -40,7 +40,7 @@
 				</p>
 				<p>
 					<label for="nf">
-						<span>Coleta/Nota Fiscal: </span>
+						<span>Coleta/NF:</span>
 						</label>
 					<input type="text" id="nf" name ="nf">
 				</p>

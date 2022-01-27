@@ -12,5 +12,5 @@ $nf = $_POST['nf'];
 $conn = ConexaoBanco();
 inserirTabela($conn,$nome,$doc,$emp,$placa,$cliente,$nf);
 echo "Dados inseridos com Sucesso!";
-header("refresh:2; url=form.php");
+//header("refresh:2; url=form.php");
 ?>

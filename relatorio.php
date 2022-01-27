@@ -14,7 +14,7 @@
 		<label>
 			<p><span>Data</span>
 		</label>
-			<input type="text" name="date" placeholder="__/__/____" size="6">
+			<input type="date" name="date" placeholder="__/__/____" size="6">
 			<button type="submit">Procurar</button>
 			</p>
 		</form>
