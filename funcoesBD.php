@@ -1,10 +1,6 @@
-<script>
-    function clickMe(){
-        
-    }
-</script>
 <?php
 include_once 'conectaBD.php';
+include_once 'funcoes.php';
 //retorna as linhas da tabela
 //function resultQuery($query){
 function getDadosBD(){
