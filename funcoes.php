@@ -15,32 +15,44 @@ function gerarLinhas($obj){
         $array = pg_fetch_array($obj,$row);
      //  $array["horarioEntrada"] = "00:00";
      //  $array["horarioSaida"] = "00:00";
-        echo "<tr>"
+        echo "<form method='POST' action='atualizaguarita.php'>" 
+            ."<tr>"
             ."<td>".$array["nome"]."</td>"
             ."<td>".$array["placa"]."</td>"
             ."<td>".preencheEntrada($array)."</td>"
             ."<td>".preencheSaida($array)."</td>"
-        ."</tr>";
+        ."</tr>"
+        ."</form>";
     endfor;
     echo "<h2>$length resultados encontrados </h2>";
    //var_dump($array);
 }
 function gerarLinhasRelatorio($obj, $now){
     $length = pg_num_rows($obj);
+    $linhas = 0;
     for($row = 0; $row<$length;$row++):
         $array = pg_fetch_array($obj, $row);
         $data = $array['var_data'];
-        echo "<br>";
         $subdata = substr($data,0,10);
         if($subdata == $now){
             echo "<tr>"
+            ."<td>".substr($array['var_data'],0,10)."</td>"
+            ."<td>".$array['doc']."</td>"
             ."<td>".$array["nome"]."</td>"
+            ."<td>".$array["emp"]."</td>"
             ."<td>".$array["placa"]."</td>"
-            ."<td>".$array['horario_entrada']."</td>"
-            ."<td>".$array['horario_saida']."</td>"
+            ."<td>".substr($array["var_data"],11,5)."</td>"
+            ."<td>".substr($array['horario_entrada'], 11,5)."</td>"
+            ."<td>".substr($array['horario_saida'],11,5)."</td>"
+            ."<td>".$array['cliente']."</td>"
+            ."<td>".$array['nf']."</td>"
         ."</tr>";
+        $linhas++;
+        
         }
+        
     endfor;
+    echo "<h2>$linhas resultados encontrados </h2>";
     echo $now;
 }
 //Função pra gerar a tabela com nome, placa, horário de entrada, horário de saída
@@ -65,10 +77,16 @@ function gerarTabelaRelatorio($data)
     echo 
     "<table border='2'>"
         ."<tr>"
+            ."<td>Data</td>"
+            ."<td>Documento</td>"
             ."<td>Nome</td>"
+            ."<td>Empresa</td>"
             ."<td>Placa</td>"
+            ."<td>Horario de Chegada</td>"
             ."<td>Horário de Entrada</td>"
             ."<td>Horário de Saída</td>"
+            ."<td>Cliente</td>"
+            ."<td>Nota Fiscal</td>"
         ."</tr>";
         gerarLinhasRelatorio(getDadosBDRelatorio(),$data);
     "</table>";
@@ -80,13 +98,12 @@ function gerarTabelaRelatorio($data)
 function  preencheEntrada($array)
 {
     if($array['horario_entrada'] == null){
-        return "<input type='text' name =".$array['cod_visita']." "
-        ."id = ".$array['cod_visita']." value =".$array['cod_visita'].">"
-        ."<input type='submit' id=btn".$array['cod_visita']." value='Registrar'> ";
+        return "<input type='hidden' name='cod_visita' value='".$array['cod_visita']."'>"
+        ."<input type='hidden' name='horario' value='horario_entrada'>"
+        ." <input type='submit' name=btn".$array['cod_visita']." value='Registrar'> ";
      }
-
-       
-     return $array['horario_entrada'];
+     $horario_entrada = substr($array['horario_entrada'], 11 ,5);
+     return $horario_entrada;
 }
 
 //Função pra preencher o horário de Saída
@@ -94,10 +111,13 @@ function  preencheEntrada($array)
 function preencheSaida($array){
     if($array['horario_entrada'] == null)
     {
-       return "<input type='button' id='btnSaida' value = 'Registrar'>";// Registrar</button>";
+       return "<input type='button' id='btnSaida' disabled value = 'Registrar'>";
     } elseif($array['horario_saida'] == null){
-        return "<input type='button' id='btnSaida' value = 'Registrar'>";//Registrar</button>";
+        return "<input type='hidden' name='cod_visita' value='".$array['cod_visita']."'>"
+        ."<input type='hidden' name='horario' value='horario_saida'>"
+        ."<input type='submit' id='btnSaida' value = 'Registrar'>";
     }
-        return $array['horario_saida'];
+        $horario_saida = substr($array['horario_saida'], 11, 5);
+        return $horario_saida;
 }
 ?>
