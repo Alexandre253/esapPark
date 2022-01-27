@@ -10,11 +10,15 @@ function GerarCabecalhoGuarita(){
 //função para gerar as linhas da tabela
 // Os dados vem em forma de objeto, do banco de dados psql
 function gerarLinhas($obj){
+    $now = date('Y-m-d');
     $length = pg_num_rows($obj);
     for($row = 0;$row<$length;$row++):
         $array = pg_fetch_array($obj,$row);
-     //  $array["horarioEntrada"] = "00:00";
-     //  $array["horarioSaida"] = "00:00";
+        $data = $array['var_data'];
+        $subdata = substr($data,0,10);
+        $cond_data = $subdata == $now;
+        $cond_horario = $array['horario_saida'] == null;
+        if($cond_data || $cond_horario){
         echo "<form method='POST' action='atualizaguarita.php'>" 
             ."<tr>"
             ."<td>".$array["nome"]."</td>"
@@ -23,8 +27,9 @@ function gerarLinhas($obj){
             ."<td>".preencheSaida($array)."</td>"
         ."</tr>"
         ."</form>";
+        }
     endfor;
-    echo "<h2>$length resultados encontrados </h2>";
+    echo "<h2>Veículos LYB </h2>";
    //var_dump($array);
 }
 function gerarLinhasRelatorio($obj, $now){
