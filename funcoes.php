@@ -22,9 +22,11 @@ function gerarLinhas($obj){
         echo "<form method='POST' action='atualizaguarita.php'>" 
             ."<tr>"
             ."<td>".$array["nome"]."</td>"
+            ."<td>".$array['emp']."</td>"
             ."<td>".$array["placa"]."</td>"
             ."<td>".preencheEntrada($array)."</td>"
             ."<td>".preencheSaida($array)."</td>"
+            ."<td> <input type='text'>"
         ."</tr>"
         ."</form>";
         }
@@ -69,9 +71,11 @@ function gerarTabelaGuarita()
     "<table border='2'>"
         ."<tr>"
             ."<td>Nome</td>"
+            ."<td>Empresa</td>"
             ."<td>Placa</td>"
             ."<td>Horário de Entrada</td>"
             ."<td>Horário de Saída</td>"
+            ."<td>Observação</td>"
         ."</tr>";
         gerarLinhas(getDadosBD());
     "</table>";
@@ -93,9 +97,65 @@ function gerarTabelaRelatorio($data)
             ."<td>Cliente</td>"
             ."<td>Nota Fiscal</td>"
         ."</tr>";
-        gerarLinhasRelatorio(getDadosBDRelatorio(),$data);
+        
+        gerarLinhasRelatorio(getDadosBD(),$data);
     "</table>";
 }
+
+
+function gerarLinhasView($obj){
+    $now = date('Y-m-d');
+    $length = pg_num_rows($obj);
+    $linhas = 0;
+    for($row = 0; $row<$length;$row++):
+        $array = pg_fetch_array($obj, $row);
+        $data = $array['var_data'];
+        $subdata = substr($data,0,10);
+        //if($subdata == $now){
+            echo "<tr>"
+            ."<td>".substr($array['var_data'],0,10)."</td>"
+            ."<td>".$array['doc']."</td>"
+            ."<td>".$array["nome"]."</td>"
+            ."<td>".$array["emp"]."</td>"
+            ."<td>".$array["placa"]."</td>"
+            ."<td>".substr($array["var_data"],11,5)."</td>"
+            ."<td>".substr($array['horario_entrada'], 11,5)."</td>"
+            ."<td>".substr($array['horario_saida'],11,5)."</td>"
+            ."<td>".$array['cliente']."</td>"
+            ."<td>".$array['nf']."</td>"
+            ."<td>".preencheAutorizar($array)."</td>"
+            ."<td>".preencheCancelar($array)."</td>"
+        ."</tr>";
+        $linhas++;
+        //}
+    endfor;
+}
+
+//função para gerar a tabela VIEW 
+function gerarView()
+{
+    echo 
+    "<table border='2'>"
+        ."<tr>"
+            ."<td>Data</td>"
+            ."<td>Documento</td>"
+            ."<td>Nome</td>"
+            ."<td>Empresa</td>"
+            ."<td>Placa</td>"
+            ."<td>Horario de Chegada</td>"
+            ."<td>Horário de Entrada</td>"
+            ."<td>Horário de Saída</td>"
+            ."<td>Cliente</td>"
+            ."<td>Nota Fiscal</td>"
+            ."<td>Autorizar</td>"
+            ."<td>Cancelar</td>"
+        ."</tr>";
+        $data = date('Y-m-d'); 
+        gerarLinhasView(getDadosBD());
+    "</table>";
+}
+
+
 //date("H:i:s")
 
 //Função para preencher o horário de entrada
@@ -125,4 +185,12 @@ function preencheSaida($array){
         $horario_saida = substr($array['horario_saida'], 11, 5);
         return $horario_saida;
 }
+
+function preencheAutorizar($array){
+    return "<input type = 'submit' value = 'Autorizar'>";
+}
+function preencheCancelar($array){
+    return "<input type = 'submit' value = 'Cancelar'>";
+}
 ?>
+

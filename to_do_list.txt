@@ -1,17 +1,19 @@
 *relatorio.*
--Aprimorar campo data -
--Correção visual 
+-Aprimorar campo data.
+-Correção visual. 
 ============================================
 *form*
 -Correção visual
 ============================================
 *guarita*
-
--Aprimoramento na busca
-    -Buscar dados do mesmo dia e com a flag yellow.
-        -flag yellow são linhas sem horário de entrada ou saída definidos.
+-Adição do campo observação:
+-Somente permitir o registro de entrada de veículos permitidos
 -Correção visual
-
+============================================
+*view*
+-Criação da página view.
+-Buscar registros do dia e com horário de entrada nulos.
+-Autorizar a entrada de veículos
 =============================================
 *G E R A L*
 -Corrigir o código
@@ -24,3 +26,11 @@
 -Criar as páginas da ibl e dumar.
     -Criar uma forma de eu inserir dados na ibl e dumar pela página form.
     -Criar uma forma da equipe de segurança inserir dados na ibl e dumar pela página guarita.
+
+    buscam pela placa
+ -Se tiver registro, dão entrada
+ -Se não tiver, registram. CPF, NOME, PLACA
+
+DUMAR
+ idem	
+	
