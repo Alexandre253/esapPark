@@ -44,6 +44,15 @@
 						</label>
 					<input type="text" id="nf" name ="nf">
 				</p>
+				<p>
+				<lable for ='dest'>
+					<span>Empresa Condominio</span>
+				</lable>
+				<select name='dest'>
+					<option value='ibl'>IBL</option>
+					<option value='lyb'>LYB</option>
+					<option value='dumar'>DUMAR</option>
+				</select>
 				<p><input type="submit" value="Enviar"></p>
 				<section>
 				</fieldset>

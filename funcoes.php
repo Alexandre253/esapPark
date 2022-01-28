@@ -27,11 +27,18 @@ function gerarLinhas($obj){
             ."<td>".preencheEntrada($array)."</td>"
             ."<td>".preencheSaida($array)."</td>"
             ."<td> <input type='text'>"
+            ."<td>".$array['dest']."</td>"
         ."</tr>"
         ."</form>";
         }
     endfor;
-    echo "<h2>Veículos LYB </h2>";
+    echo"</table>"
+        ."<br>"
+        ."<form action='guaritacadastro.php' method='post'>"
+        ."<lable for = 'placa'>INSERIR PLACA NOVA:</lable>" 
+        ." <input type='text' name='placa'>"
+        ." <input type='submit' value='INSERIR'>"
+        ."</form>";
    //var_dump($array);
 }
 function gerarLinhasRelatorio($obj, $now){
@@ -57,7 +64,6 @@ function gerarLinhasRelatorio($obj, $now){
         $linhas++;
         
         }
-        
     endfor;
     echo "<h2>$linhas resultados encontrados </h2>";
     echo $now;
@@ -76,6 +82,7 @@ function gerarTabelaGuarita()
             ."<td>Horário de Entrada</td>"
             ."<td>Horário de Saída</td>"
             ."<td>Observação</td>"
+            ."<td>Destino</td>"
         ."</tr>";
         gerarLinhas(getDadosBD());
     "</table>";
@@ -113,6 +120,7 @@ function gerarLinhasView($obj){
         $subdata = substr($data,0,10);
         //if($subdata == $now){
             echo "<tr>"
+            ."<form action='atualizaview.php' method ='POST'>"
             ."<td>".substr($array['var_data'],0,10)."</td>"
             ."<td>".$array['doc']."</td>"
             ."<td>".$array["nome"]."</td>"
@@ -187,10 +195,54 @@ function preencheSaida($array){
 }
 
 function preencheAutorizar($array){
+    if($array['autorizado'])
+    {
+        return "Autorizado";
+    }
     return "<input type = 'submit' value = 'Autorizar'>";
 }
 function preencheCancelar($array){
     return "<input type = 'submit' value = 'Cancelar'>";
+}
+
+function gerarCadastroGuarita($array){
+    if($array == null)
+    {
+    echo "<h2>PLACA NÃO CONSTA NO SISTEMA, FAÇA O CADASTRO</h2>"
+        ."<lable for ='placa'>Placa</lable>
+        <input type='text' name='placa'> <br><br>
+        <lable for ='nome'>Nome</lable>
+        <input type='text' name='nome'> <br><br>
+        <lable for ='doc'>Documento</lable>
+        <input type='text' name='doc'> <br><br>
+        <lable for ='Empresa'>Empresa do motorista</lable>
+        <input type='text' name='emp'> <br><br>
+        <lable for ='dest'>Empresa Condominio</lable>
+        <select name='dest'>
+            <option value='ibl'>IBL</option>
+            <option value='lyb'>LYB</option>
+            <option value='dumar'>DUMAR</option>
+        </select> <br><br>
+        <input type='submit' value ='Registrar'>";
+    }
+    else
+    {
+        echo "<lable for ='placa'>Placa</lable>
+        <input type='text' name='placa' value=".$array['placa']."> <br><br>
+        <lable for ='nome'>Nome</lable>
+        <input type='text' name='nome'  value=".$array['nome']."> <br><br>
+        <lable for ='doc'>Documento</lable>
+        <input type='text' name='doc'  value=".$array['doc']."> <br><br>
+        <lable for ='Empresa'>Empresa do motorista</lable>
+        <input type='text' name='emp'  value=".$array['emp']."> <br><br>
+        <lable for ='dest'>Empresa Condominio</lable>
+        <select name='dest'>
+            <option value='ibl'>IBL</option>
+            <option value='lyb'>LYB</option>
+            <option value='dumar'>DUMAR</option>
+        </select> <br><br>
+        <input type='submit' value ='Registrar'>";
+    }
 }
 ?>
 
