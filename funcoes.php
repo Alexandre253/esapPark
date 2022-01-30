@@ -26,7 +26,6 @@ function gerarLinhas($obj){
             ."<td>".$array["placa"]."</td>"
             ."<td>".preencheEntrada($array)."</td>"
             ."<td>".preencheSaida($array)."</td>"
-            ."<td> <input type='text'>"
             ."<td>".$array['dest']."</td>"
         ."</tr>"
         ."</form>";
@@ -81,7 +80,6 @@ function gerarTabelaGuarita()
             ."<td>Placa</td>"
             ."<td>Horário de Entrada</td>"
             ."<td>Horário de Saída</td>"
-            ."<td>Observação</td>"
             ."<td>Destino</td>"
         ."</tr>";
         gerarLinhas(getDadosBD());
@@ -118,9 +116,11 @@ function gerarLinhasView($obj){
         $array = pg_fetch_array($obj, $row);
         $data = $array['var_data'];
         $subdata = substr($data,0,10);
+        $cond_data = $subdata == $now;
+        $cond_horario = $array['horario_saida'] == null;
+        if($cond_data || $cond_horario){
         //if($subdata == $now){
             echo "<tr>"
-            ."<form action='atualizaview.php' method ='POST'>"
             ."<td>".substr($array['var_data'],0,10)."</td>"
             ."<td>".$array['doc']."</td>"
             ."<td>".$array["nome"]."</td>"
@@ -135,7 +135,7 @@ function gerarLinhasView($obj){
             ."<td>".preencheCancelar($array)."</td>"
         ."</tr>";
         $linhas++;
-        //}
+        }
     endfor;
 }
 
@@ -195,14 +195,32 @@ function preencheSaida($array){
 }
 
 function preencheAutorizar($array){
-    if($array['autorizado'])
+    if($array['autorizado'] == "t")
+    {
+        return "Autorizado";
+    }elseif($array['cancelado'] == "t")
+    {
+        return "Cancelado";
+    }
+    return "<form action='atualizaview.php' method ='POST'>"
+    ."<input type='hidden' name='cod_visita' value='".$array['cod_visita']."'>"
+    ."<input type='hidden' name='bool' value='autorizado'>"
+    ."<input type = 'submit' value = 'Autorizar'>"
+    ."</form>";
+}
+function preencheCancelar($array){
+    if($array['cancelado'] =="t")
+    {
+        return "Cancelado";
+    }elseif($array['autorizado'] == "t")
     {
         return "Autorizado";
     }
-    return "<input type = 'submit' value = 'Autorizar'>";
-}
-function preencheCancelar($array){
-    return "<input type = 'submit' value = 'Cancelar'>";
+    return "<form action='atualizaview.php' method ='POST'>"
+    ."<input type='hidden' name='cod_visita' value='".$array['cod_visita']."'>"
+        ."<input type='hidden' name='bool' value='cancelado'>" 
+        ."<input type = 'submit' value = 'Cancelar'>"
+        ."</form>";
 }
 
 function gerarCadastroGuarita($array){

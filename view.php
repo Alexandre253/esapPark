@@ -4,12 +4,11 @@
     </head>
 
     <body>
-        <h2>Hello World!</h2>
+        <h2>Autorize ou cancele a entrada de veículos</h2>
         <?php
             include_once 'funcoes.php';
             include_once 'funcoesBD.php';
             include_once 'conectaBD.php';
-
             gerarView();
         ?>
     </body>
