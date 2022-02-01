@@ -36,10 +36,10 @@ $result =pg_query($conn, $string);
 //var_dump($result);
 //pg_close($conn);
 }
-function inserirGuarita($conn, $placa, $nome, $doc, $emp, $dest)
+function inserirGuarita($conn, $placa, $nome, $doc, $emp, $dest,$autorizado,$cancelado)
 {
-    $query = "INSERT INTO public.planilha(var_data, doc, nome, emp, placa, dest)"
-            ."VALUES (now(), '$doc', '$nome', '$emp', '$placa', '$dest')";
+    $query = "INSERT INTO public.planilha(var_data, doc, nome, emp, placa, dest, autorizado, cancelado)"
+            ."VALUES (now(), '$doc', '$nome', '$emp', '$placa', '$dest', '$autorizado', '$cancelado')";
         $result = pg_query($conn, $query);
 }
 //função que gera o conn

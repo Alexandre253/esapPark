@@ -18,6 +18,7 @@ function gerarLinhas($obj){
         $subdata = substr($data,0,10);
         $cond_data = $subdata == $now;
         $cond_horario = $array['horario_saida'] == null;
+    if($array['autorizado'] == "t" && $array['cancelado'] =="f"){
         if($cond_data || $cond_horario){
         echo "<form method='POST' action='atualizaguarita.php'>" 
             ."<tr>"
@@ -30,6 +31,7 @@ function gerarLinhas($obj){
         ."</tr>"
         ."</form>";
         }
+    }
     endfor;
     echo"</table>"
         ."<br>"
@@ -61,7 +63,6 @@ function gerarLinhasRelatorio($obj, $now){
             ."<td>".$array['nf']."</td>"
         ."</tr>";
         $linhas++;
-        
         }
     endfor;
     echo "<h2>$linhas resultados encontrados </h2>";
@@ -223,12 +224,12 @@ function preencheCancelar($array){
         ."</form>";
 }
 
-function gerarCadastroGuarita($array){
+function gerarCadastroGuarita($array, $placa){
     if($array == null)
     {
     echo "<h2>PLACA NÃO CONSTA NO SISTEMA, FAÇA O CADASTRO</h2>"
         ."<lable for ='placa'>Placa</lable>
-        <input type='text' name='placa'> <br><br>
+        <input type='text' name='placa' value ='$placa'> <br><br>
         <lable for ='nome'>Nome</lable>
         <input type='text' name='nome'> <br><br>
         <lable for ='doc'>Documento</lable>

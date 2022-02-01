@@ -10,7 +10,7 @@ $placa = $_POST['placa'];
     <head><title>Cadastro de Placa</title></head>
     <body>
         <form action="insereguaritacadastro.php" method="POST">
-        <?php gerarCadastroGuarita(verifExistsPlaca($placa));?>
+        <?php gerarCadastroGuarita(verifExistsPlaca($placa), $placa);?>
         </form>
         <a href='guarita.php'> Voltar </a>
 
