@@ -65,8 +65,10 @@ function atualizaViewAutorizado($conn, $cod_visita){
     $result = pg_query($conn, $query);
 }
 function atualizaViewCancelado($conn, $cod_visita){
-        $query = "UPDATE public.planilha SET cancelado = TRUE, horario_entrada = null,"
-        ." horario_saida = null WHERE cod_visita = $cod_visita;";
+        $data = date("Y-m-d");
+        $data .= " 00:00:00";
+        $query = "UPDATE public.planilha SET cancelado = TRUE, horario_entrada = '$data',"
+        ." horario_saida = '$data' WHERE cod_visita = $cod_visita;";
         $result =pg_query($conn, $query);
 }
 function buscaDadosGuarita(){
