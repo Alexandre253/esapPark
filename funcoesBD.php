@@ -65,12 +65,15 @@ function atualizaViewAutorizado($conn, $cod_visita){
     $result = pg_query($conn, $query);
 }
 function atualizaViewCancelado($conn, $cod_visita){
-    {
         $query = "UPDATE public.planilha SET cancelado = TRUE, horario_entrada = null,"
         ." horario_saida = null WHERE cod_visita = $cod_visita;";
         $result =pg_query($conn, $query);
-    }
 }
-function 
-
+function buscaDadosGuarita(){
+    $conn = conexaoBanco();
+    $query = "SELECT * FROM  public.planilha WHERE (horario_entrada is null OR "
+    ."horario_saida is null) and autorizado = TRUE";
+    $result = pg_query($conn, $query);
+    return $result;
+}
 ?>

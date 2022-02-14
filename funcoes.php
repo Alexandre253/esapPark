@@ -14,12 +14,6 @@ function gerarLinhas($obj){
     $length = pg_num_rows($obj);
     for($row = 0;$row<$length;$row++):
         $array = pg_fetch_array($obj,$row);
-        $data = $array['var_data'];
-        $subdata = substr($data,0,10);
-        $cond_data = $subdata == $now;
-        $cond_horario = $array['horario_saida'] == null;
-    if($array['autorizado'] == "t" && $array['cancelado'] =="f"){
-        if($cond_data || $cond_horario){
         echo "<form method='POST' action='atualizaguarita.php'>" 
             ."<tr>"
             ."<td>".$array["nome"]."</td>"
@@ -30,8 +24,6 @@ function gerarLinhas($obj){
             ."<td>".$array['dest']."</td>"
         ."</tr>"
         ."</form>";
-        }
-    }
     endfor;
     echo"</table>"
         ."<br>"
@@ -83,7 +75,7 @@ function gerarTabelaGuarita()
             ."<td>Horário de Saída</td>"
             ."<td>Destino</td>"
         ."</tr>";
-        gerarLinhas(getDadosBD());
+        gerarLinhas(buscaDadosGuarita());
     "</table>";
 }
 
