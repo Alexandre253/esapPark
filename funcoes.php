@@ -102,17 +102,11 @@ function gerarTabelaRelatorio($data)
 
 
 function gerarLinhasView($obj){
-    $now = date('Y-m-d');
+    //$now = date('Y-m-d');
     $length = pg_num_rows($obj);
     $linhas = 0;
     for($row = 0; $row<$length;$row++):
         $array = pg_fetch_array($obj, $row);
-        $data = $array['var_data'];
-        $subdata = substr($data,0,10);
-        $cond_data = $subdata == $now;
-        $cond_horario = $array['horario_saida'] == null;
-        if($cond_data || $cond_horario){
-        //if($subdata == $now){
             echo "<tr>"
             ."<td>".substr($array['var_data'],0,10)."</td>"
             ."<td>".$array['doc']."</td>"
@@ -127,8 +121,6 @@ function gerarLinhasView($obj){
             ."<td>".preencheAutorizar($array)."</td>"
             ."<td>".preencheCancelar($array)."</td>"
         ."</tr>";
-        $linhas++;
-        }
     endfor;
 }
 
@@ -151,7 +143,7 @@ function gerarView()
             ."<td>Autorizar</td>"
             ."<td>Cancelar</td>"
         ."</tr>";
-        gerarLinhasView(getDadosBD());
+        gerarLinhasView(buscaDadosView());
     "</table>";
 }
 

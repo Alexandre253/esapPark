@@ -71,8 +71,19 @@ function atualizaViewCancelado($conn, $cod_visita){
 }
 function buscaDadosGuarita(){
     $conn = conexaoBanco();
+    $data = date("Y-m-d");
+    $data .= " 00:00:00";
     $query = "SELECT * FROM  public.planilha WHERE (horario_entrada is null OR "
-    ."horario_saida is null) and autorizado = TRUE";
+    ."horario_saida is null OR var_data>= '$data') and autorizado = TRUE  order by cod_visita asc";
+    $result = pg_query($conn, $query);
+    return $result;
+}
+function buscaDadosView(){
+    $conn = conexaoBanco();
+    $data = date("Y-m-d");
+    $data .= " 00:00:00";
+    $query = "SELECT * FROM public.planilha WHERE horario_saida is null OR var_data >= '$data'"
+    ."order by cod_visita asc";
     $result = pg_query($conn, $query);
     return $result;
 }

@@ -1,5 +1,5 @@
 <?php
-$string = "2022-01-27 10:47:04.480753-03";
-echo substr($string, 11 ,5);
-
+$data = date("Y-m-d");
+$data .= " 00:00:00";
+echo $data;
 ?>
