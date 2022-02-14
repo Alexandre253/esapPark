@@ -1,36 +1,28 @@
 *relatorio.*
--Aprimorar campo data.
--Correção visual. 
 ============================================
 *form*
--Correção visual
 ============================================
 *guarita*
--Adição do campo observação:
--Somente permitir o registro de entrada de veículos permitidos
--Correção visual
+COLOCAR MÁSCARA NO INPUT DA PLACA
 ============================================
 *view*
--Criação da página view.
--Buscar registros do dia e com horário de entrada nulos.
--Autorizar a entrada de veículos
 =============================================
 *G E R A L*
+
+-Colocar um alert de confirmação em TODOS os botões
+
 -Corrigir o código
     -tirar os execessos.
     -tirar funções que tem o mesmo código.
--Arrumar uma forma de registrar veículos que não entraram.
 -Arrumar uma forma de colocar número de telefone.
--Arrumar uma forma de colocar observação, tanto eu, como os vigilantes
+
 -Reestruturar o banco de dados.
--Criar as páginas da ibl e dumar.
-    -Criar uma forma de eu inserir dados na ibl e dumar pela página form.
-    -Criar uma forma da equipe de segurança inserir dados na ibl e dumar pela página guarita.
 
-    buscam pela placa
- -Se tiver registro, dão entrada
- -Se não tiver, registram. CPF, NOME, PLACA
+-inserir todos os dados dos últimos 3 meses
 
-DUMAR
- idem	
-	
+-deixar os 2 sistemas rodando em simutaneo por 3 meses
+
+-Criar uma tela de login 
+    -login
+    -logout
+    -niveis de permissão

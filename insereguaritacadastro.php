@@ -10,9 +10,8 @@ $emp = $_POST['emp'];
 $dest = filter_input(INPUT_POST, 'dest', FILTER_SANITIZE_STRING);
 $autorizado = "t";
 $cancelado = "f";
-echo $dest;
 inserirGuarita($conn,$placa, $nome, $doc, $emp, $dest, $autorizado, $cancelado);
 echo "Dados inseridos com sucesso";
-header("Refresh:2;url='guarita.php'")
+header("Refresh:0;url='guarita.php'")
 
 ?>

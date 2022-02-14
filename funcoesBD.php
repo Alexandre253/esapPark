@@ -25,8 +25,8 @@ function verifExistsPlaca($placa){
     if(pg_num_rows($result) == 0){
         return null;
     }
-    return  pg_fetch_array($result, 0);
-
+    return pg_fetch_array($result, 0);
+    
 }
 function inserirTabela($conn, $nome,$doc,$emp,$placa,$cliente,$nf,$dest){
 $string ="INSERT INTO public.planilha("
@@ -71,5 +71,6 @@ function atualizaViewCancelado($conn, $cod_visita){
         $result =pg_query($conn, $query);
     }
 }
+function 
 
 ?>

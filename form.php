@@ -12,37 +12,37 @@
 					<label for="doc">
 						<span>Documento: </span>
 						</label>
-					<input type="text" name ="doc" id="doc">
+					<input type="text" name ="doc" id="doc" style='text-transform:uppercase' required>
 				</p>
 				<p>
 					<label for="nome">
 						<span>Nome: </span>
 						</label>
-					<input type="text" id="nome" name="nome">
+					<input type="text" id="nome" name="nome" style='text-transform:uppercase' required>
 				</p>
 				<p>
 					<label for="emp">
 						<span>Empresa: </span>
 						</label>
-					<input type="text" id="emp" name="emp">
+					<input type="text" id="emp" name="emp" style='text-transform:uppercase' required>
 				</p>
 				<p>
 					<label for="placa">
 						<span>Placa: </span>
 						</label>
-					<input type="text" id="placa" name ="placa">
+					<input type="text" id="placa" name ="placa" style='text-transform:uppercase' required> 
 				</p>
 				<p>
 					<label for="cliente">
 						<span>Cliente: </span>
 						</label>
-					<input type="text" id="cliente" name ="cliente">
+					<input type="text" id="cliente" name ="cliente" style='text-transform:uppercase' required>
 				</p>
 				<p>
 					<label for="nf">
 						<span>Coleta/NF:</span>
 						</label>
-					<input type="text" id="nf" name ="nf">
+					<input type="text" id="nf" name ="nf" style='text-transform:uppercase' required>
 				</p>
 				<p>
 				<lable for ='dest'>

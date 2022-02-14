@@ -37,7 +37,7 @@ function gerarLinhas($obj){
         ."<br>"
         ."<form action='guaritacadastro.php' method='post'>"
         ."<lable for = 'placa'>INSERIR PLACA NOVA:</lable>" 
-        ." <input type='text' name='placa'>"
+        ." <input type='text' name='placa' placeholder='AAA-0000' style='text-transform:uppercase'>"
         ." <input type='submit' value='INSERIR'>"
         ."</form>";
    //var_dump($array);
@@ -159,7 +159,6 @@ function gerarView()
             ."<td>Autorizar</td>"
             ."<td>Cancelar</td>"
         ."</tr>";
-        $data = date('Y-m-d'); 
         gerarLinhasView(getDadosBD());
     "</table>";
 }
@@ -229,15 +228,16 @@ function gerarCadastroGuarita($array, $placa){
     {
     echo "<h2>PLACA NÃO CONSTA NO SISTEMA, FAÇA O CADASTRO</h2>"
         ."<lable for ='placa'>Placa</lable>
-        <input type='text' name='placa' value ='$placa'> <br><br>
-        <lable for ='nome'>Nome</lable>
-        <input type='text' name='nome'> <br><br>
+        <input type='text' name='placa' value ='$placa' placeholder='AAA-0000' style='text-transform:uppercase' required> <br><br>
         <lable for ='doc'>Documento</lable>
-        <input type='text' name='doc'> <br><br>
+        <input type='text' name='doc' style='text-transform:uppercase' required> <br><br>
+        <lable for ='nome'>Nome</lable>
+        <input type='text' name='nome' style='text-transform:uppercase' required> <br><br>
         <lable for ='Empresa'>Empresa do motorista</lable>
-        <input type='text' name='emp'> <br><br>
+        <input type='text' name='emp' style='text-transform:uppercase' required> <br><br>
         <lable for ='dest'>Empresa Condominio</lable>
-        <select name='dest'>
+        <select name='dest' required>
+            <option value=''>Clique aqui</option>
             <option value='ibl'>IBL</option>
             <option value='lyb'>LYB</option>
             <option value='dumar'>DUMAR</option>
@@ -247,13 +247,13 @@ function gerarCadastroGuarita($array, $placa){
     else
     {
         echo "<lable for ='placa'>Placa</lable>
-        <input type='text' name='placa' value=".$array['placa']."> <br><br>
+        <input type='text' name='placa' value='".$array['placa']."' style='text-transform:uppercase' required> <br><br>
         <lable for ='nome'>Nome</lable>
-        <input type='text' name='nome'  value=".$array['nome']."> <br><br>
+        <input type='text' name='nome'  value='".$array['nome']."' style='text-transform:uppercase' required> <br><br>
         <lable for ='doc'>Documento</lable>
-        <input type='text' name='doc'  value=".$array['doc']."> <br><br>
+        <input type='text' name='doc'  value=".$array['doc']." style='text-transform:uppercase' required> <br><br>
         <lable for ='Empresa'>Empresa do motorista</lable>
-        <input type='text' name='emp'  value=".$array['emp']."> <br><br>
+        <input type='text' name='emp'  value='".$array['emp']."' style='text-transform:uppercase' required> <br><br>
         <lable for ='dest'>Empresa Condominio</lable>
         <select name='dest'>
             <option value='ibl'>IBL</option>
