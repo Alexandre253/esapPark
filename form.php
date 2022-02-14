@@ -4,7 +4,7 @@
 	</head>
 	
 	<body>
-		<form method="post" action ="insereform.php">
+		<form onsubmit="return confirm('Deseja mesmo fazer isso?')" method="post" action ="insereform.php">
 				<h2>Registro de entrada</h2>
 				<section>
 				<fieldset>

@@ -25,9 +25,10 @@ function gerarLinhas($obj){
         ."</tr>"
         ."</form>";
     endfor;
+    $texto = " 'Deseja mesmo fazer isso?')";
     echo"</table>"
         ."<br>"
-        ."<form action='guaritacadastro.php' method='post'>"
+        ."<form onsubmit='return confirm()' action='guaritacadastro.php' method='post'>"
         ."<lable for = 'placa'>INSERIR PLACA NOVA:</lable>" 
         ." <input type='text' name='placa' placeholder='AAA-0000' style='text-transform:uppercase'>"
         ." <input type='submit' value='INSERIR'>"
@@ -186,7 +187,7 @@ function preencheAutorizar($array){
     {
         return "Cancelado";
     }
-    return "<form action='atualizaview.php' method ='POST'>"
+    return "<form onsubmit='return confirm()' action='atualizaview.php' method ='POST'>"
     ."<input type='hidden' name='cod_visita' value='".$array['cod_visita']."'>"
     ."<input type='hidden' name='bool' value='autorizado'>"
     ."<input type = 'submit' value = 'Autorizar'>"
@@ -200,7 +201,7 @@ function preencheCancelar($array){
     {
         return "Autorizado";
     }
-    return "<form action='atualizaview.php' method ='POST'>"
+    return "<form onsubmit='return confirm()' action='atualizaview.php' method ='POST'>"
     ."<input type='hidden' name='cod_visita' value='".$array['cod_visita']."'>"
         ."<input type='hidden' name='bool' value='cancelado'>" 
         ."<input type = 'submit' value = 'Cancelar'>"

@@ -12,5 +12,5 @@ $dest = filter_input(INPUT_POST, 'dest', FILTER_SANITIZE_STRING);
 $conn = ConexaoBanco();
 inserirTabela($conn,$nome,$doc,$emp,$placa,$cliente,$nf,$dest);
 echo "Dados inseridos com Sucesso!";
-header("refresh:2; url=form.php");
+header("refresh:1; url=form.php");
 ?>
