@@ -1,5 +1,5 @@
 <?php
-include 'funcoesBD.php';
+include_once 'funcoesBD.php';
 //preencher o array de teste
 
 //Função para gerar o cabeçalho da tabela da guarita

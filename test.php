@@ -1,5 +1,5 @@
 <?php
-$data = date("Y-m-d");
-$data .= " 00:00:00";
-echo $data;
+session_start();
+$_SESSION['nome'] = 'joao';
+echo '<a href="verificalogin.php">Verificar</a>';
 ?>
