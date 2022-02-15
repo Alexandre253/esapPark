@@ -14,7 +14,7 @@ function gerarLinhas($obj){
     $length = pg_num_rows($obj);
     for($row = 0;$row<$length;$row++):
         $array = pg_fetch_array($obj,$row);
-        echo "<form method='POST' action='atualizaguarita.php'>" 
+        echo '<form onsubmit="return confirm()" method="POST" action="atualizaguarita.php">' 
             ."<tr>"
             ."<td>".$array["nome"]."</td>"
             ."<td>".$array['emp']."</td>"
@@ -28,9 +28,9 @@ function gerarLinhas($obj){
     $texto = " 'Deseja mesmo fazer isso?')";
     echo"</table>"
         ."<br>"
-        ."<form onsubmit='return confirm()' action='guaritacadastro.php' method='post'>"
+        .'<form onsubmit="return confirm()" action="guaritacadastro.php" method="post">'
         ."<lable for = 'placa'>INSERIR PLACA NOVA:</lable>" 
-        ." <input type='text' name='placa' placeholder='AAA-0000' style='text-transform:uppercase'>"
+        ." <input type='text' name='placa' id='placa' placeholder='AAA-0000' style='text-transform:uppercase'>"
         ." <input type='submit' value='INSERIR'>"
         ."</form>";
    //var_dump($array);

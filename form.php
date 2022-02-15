@@ -4,6 +4,7 @@ include 'verificalogin.php'
 <html>
 	<head>
 		<title> Formulário de entrada </title>
+		<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 	</head>
 	
 	<body>
@@ -33,7 +34,7 @@ include 'verificalogin.php'
 					<label for="placa">
 						<span>Placa: </span>
 						</label>
-					<input type="text" id="placa" name ="placa" style='text-transform:uppercase' required> 
+					<input type="text" id="placa" name ="placa" style='text-transform:uppercase' maxlength=8 required> 
 				</p>
 				<p>
 					<label for="cliente">
@@ -60,4 +61,12 @@ include 'verificalogin.php'
 				<section>
 				</fieldset>
 		</form>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+		<script>	
+		$(document).ready(function () { 
+				var $seuCampoCpf = $("#placa");
+				$seuCampoCpf.mask('AAA-9A99');
+			});
+		</script>
 	</body>
+</html>

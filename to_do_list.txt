@@ -3,13 +3,10 @@
 *form*
 ============================================
 *guarita*
-COLOCAR MÁSCARA NO INPUT DA PLACA
 ============================================
 *view*
 =============================================
 *G E R A L*
-
--Colocar um alert de confirmação em TODOS os botões
 
 -Corrigir o código
     -tirar os execessos.
@@ -21,8 +18,3 @@ COLOCAR MÁSCARA NO INPUT DA PLACA
 -inserir todos os dados dos últimos 3 meses
 
 -deixar os 2 sistemas rodando em simutaneo por 3 meses
-
--Criar uma tela de login 
-    -login
-    -logout
-    -niveis de permissão
