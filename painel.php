@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'verificalogin.php';
-echo $_SESSION['login'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +9,7 @@ echo $_SESSION['login'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel</title>
+    <h2><a href='guarita.php'>TABELA GUARITA</a></h2>
 </head>
 <body>
     

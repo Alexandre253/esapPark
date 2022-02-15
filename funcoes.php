@@ -1,13 +1,8 @@
 <?php
 include_once 'funcoesBD.php';
-//preencher o array de teste
 
-//Função para gerar o cabeçalho da tabela da guarita
-function GerarCabecalhoGuarita(){
-    
-}
 
-//função para gerar as linhas da tabela
+//função para gerar as linhas da tabela guarita
 // Os dados vem em forma de objeto, do banco de dados psql
 function gerarLinhas($obj){
     $now = date('Y-m-d');
