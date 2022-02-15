@@ -9,6 +9,7 @@
             include_once 'funcoes.php';
             include_once 'funcoesBD.php';
             include_once 'conectaBD.php';
+            include 'verificalogin.php';
             gerarView();
         ?>
     </body>

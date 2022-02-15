@@ -1,3 +1,6 @@
+<?php
+include 'verificalogin.php'
+?>
 <html>
 	<head>
 		<title> Formulário de entrada </title>

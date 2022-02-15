@@ -9,6 +9,7 @@
 		include_once 'conectaBD.php';
 	    $data = '2022-01-26';
 		gerarTabelaRelatorio($data);*/
+		include 'verificalogin.php';
 		?>
 		<form method="post" action="buscarelatorio.php">
 			<h2>Escolha a data e pressione procurar para buscar o relatório</h2>
